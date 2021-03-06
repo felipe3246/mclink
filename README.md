@@ -6,6 +6,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu ipsum mag
 # How to run docker .net core backend
 
 > docker build -t mclinktree .
+
 > docker run -d -p 8080:80 --name mclinktreeapp mclinktree
 
 ## How to run migrations
