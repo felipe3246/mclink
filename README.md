@@ -11,6 +11,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu ipsum mag
 
 ## How to run migrations
 
-Create a local MySQL database with the name "mclinktree".
-using dotnet command run in powershell, bash or cmd.
+Create a local MySQL database with the name "mclinktree". <br>
+After the database created, using dotnet command run in powershell, bash or cmd.
 > dotnet ef database update
