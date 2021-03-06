@@ -1,0 +1,10 @@
+.App-header {
+    width: 100%;
+    height: 20vh;
+    background: url('./assets/images/header-bg.png');
+    border-top: 10px solid var(--color-hover);
+
+    &-logo {
+        margin: -10px 0 0 5%;
+    }
+}

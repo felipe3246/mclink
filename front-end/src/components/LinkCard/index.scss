@@ -1,0 +1,63 @@
+.LinkCard {
+    width: 300px;
+    margin: 40px;
+    padding: 10px 20px;
+    border-bottom: 5px solid var(--color-inactive);
+    -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.5);
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    &:hover {
+        border-bottom: 5px solid var(--color-hover);
+    }
+
+    &-title {
+        cursor: pointer;
+        h1 {
+            .LinkCard-arrow {
+                float: right;
+            }
+
+            i {
+                font-size: 30px;
+            }
+        }
+    }
+
+    &-list {
+        margin: 25px 0;
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            li {
+                margin-bottom: 20px;
+
+                a, a:hover, a:active {
+                    color: var(--color-links)
+                }
+            }
+        }
+
+        &-item {
+            font-weight:500;
+        }
+
+        &-icon {
+            margin: 0 0 0 20px;
+            color: var(--color-text);
+            float: right;
+            cursor: pointer;
+        }
+    }
+
+}
+
+.active {
+    border-bottom: 5px solid var(--color-hover);
+}
