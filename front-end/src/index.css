@@ -2,10 +2,14 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+*:focus {
+  outline: none;
+}
+
 h1 {
   font-weight: 600;
   font-size: 20px;
-  color: var(--color-tite);
+  color: var(--color-title);
 }
 
 h2 {
