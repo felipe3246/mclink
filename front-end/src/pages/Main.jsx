@@ -23,13 +23,13 @@ const Main = () => {
                 </div>
             </div>
             <div className="Main-items">
-                {categories.length > 0 ? (
+                { (categories && categories.length > 0) ? (
                     <>
                         { categories.map(category => (
                             <LinkCard icon={category.Ico} title={category.Nome} links={category.Links} key={category.Id}></LinkCard>
                         ))}
                     </>
-                ) : ""}
+                ) : (<h1 style={{ margin: "0 auto" }}>Nenhuma categoria cadastrada</h1>)}
             </div>
         </div>
     )
