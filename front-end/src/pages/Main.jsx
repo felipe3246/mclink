@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import LinkCard from '../components/LinkCard'
+import { getCategories } from '../service/categoriasService';
 import './Main.scss';
 
 const Main = () => {
 
-    const treinamento = [{
-        title: "Como fazer BigMC",
-        url: "google.com.br"
-    }, {
-        title: "Procedimentos Bebidas",
-        url: "google.com.br"
-    }, {
-        title: "Sorvete de Creme",
-        url: "google.com.br"
-    }];
+    const [categories, setCategories] = useState({});
+
+    useEffect(() => {
+        getCategories().then(result => {
+            setCategories(result);
+        });
+    }, []);
 
     return(
         <div className="Main">
@@ -25,10 +23,13 @@ const Main = () => {
                 </div>
             </div>
             <div className="Main-items">
-                <LinkCard icon="rocket" title="Treinamento" links={treinamento}></LinkCard>
-                <LinkCard icon="user" title="RH"></LinkCard>
-                <LinkCard icon="tools" title="Operações"></LinkCard>
-                <LinkCard icon="chart-bar" title="Financeiro"></LinkCard>
+                {categories.length > 0 ? (
+                    <>
+                        { categories.map(category => (
+                            <LinkCard icon={category.Ico} title={category.Nome} links={category.Links} key={category.Id}></LinkCard>
+                        ))}
+                    </>
+                ) : ""}
             </div>
         </div>
     )

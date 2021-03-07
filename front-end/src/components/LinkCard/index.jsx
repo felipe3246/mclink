@@ -25,7 +25,7 @@ const LinkCard = ({ icon, title, links }) => {
                         {links.map((link, index) => {
                             return (
                                 <li key={index}>
-                                    <a href={link.url} className="LinkCard-list-item" target="_blank" rel="noreferrer">{link.title}</a>
+                                    <a href={link.UrlLink} className="LinkCard-list-item" target="_blank" rel="noreferrer">{link.Nome}</a>
                                     <span className="LinkCard-list-icon"><i className="fa fa-trash"></i></span>
                                     <span className="LinkCard-list-icon"><i className="fa fa-edit"></i></span>
                                 </li>
