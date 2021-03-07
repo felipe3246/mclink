@@ -21,5 +21,26 @@ namespace McLinkTree.Controllers
         {
             return this.mcLinkTreeContext.CategoriaLink.ToList();
         }
+
+        [HttpGet("{id}")]
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+        [HttpPost]
+        public void Post(Link newLink)
+        {
+        }
+
+        [HttpPut("{id}")]
+        public void Put(int id, Link editLink)
+        {
+        }
+
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        }
     }
 }
