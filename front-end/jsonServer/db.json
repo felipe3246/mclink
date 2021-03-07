@@ -1,0 +1,148 @@
+{
+    "categorias": [
+        {
+            "Id": 1,
+            "Nome": "Treinamento",
+            "Descricao": "Treinamentos da galera",
+            "Ico": "rocket",
+            "Posicao": 1,
+            "DtInclusao": "2021-01-01",
+            "DtAlteracao": "2021-01-01",
+            "Ativo": true,
+            "Links": [{
+                "Id": 1,
+                "IdCategoriaLink": 1,
+                "Nome": "Como fazer BigMC",
+                "UrlLink": "http://www.google.com",
+                "DtInclusao": "2021-01-01",
+                "DtAlteracao": "2021-01-01",
+                "Ativo": true
+            },{
+                "Id": 2,
+                "IdCategoriaLink": 1,
+                "Nome": "Procedimentos Bebidas",
+                "UrlLink": "http://www.google.com",
+                "DtInclusao": "2021-01-01",
+                "DtAlteracao": "2021-01-01",
+                "Ativo": true
+            },
+            {
+                "Id": 3,
+                "IdCategoriaLink": 1,
+                "Nome": "Sorvete de Creme",
+                "UrlLink": "http://www.google.com",
+                "DtInclusao": "2021-01-01",
+                "DtAlteracao": "2021-01-01",
+                "Ativo": true
+            }]
+        },
+        {
+            "Id": 2,
+            "Nome": "RH",
+            "Descricao": "RH da galera",
+            "Ico": "user",
+            "Posicao": 2,
+            "DtInclusao": "2021-01-01",
+            "DtAlteracao": "2021-01-01",
+            "Ativo": true,
+            "Links": [{
+                "Id": 1,
+                "IdCategoriaLink": 2,
+                "Nome": "Como fazer BigMC",
+                "UrlLink": "http://www.google.com",
+                "DtInclusao": "2021-01-01",
+                "DtAlteracao": "2021-01-01",
+                "Ativo": true
+            },{
+                "Id": 2,
+                "IdCategoriaLink": 2,
+                "Nome": "Procedimentos Bebidas",
+                "UrlLink": "http://www.google.com",
+                "DtInclusao": "2021-01-01",
+                "DtAlteracao": "2021-01-01",
+                "Ativo": true
+            },
+            {
+                "Id": 3,
+                "IdCategoriaLink": 2,
+                "Nome": "Sorvete de Creme",
+                "UrlLink": "http://www.google.com",
+                "DtInclusao": "2021-01-01",
+                "DtAlteracao": "2021-01-01",
+                "Ativo": true
+            }]
+        },
+        {
+            "Id": 3,
+            "Nome": "Oprações",
+            "Descricao": "Oprações da galera",
+            "Ico": "tools",
+            "Posicao": 3,
+            "DtInclusao": "2021-01-01",
+            "DtAlteracao": "2021-01-01",
+            "Ativo": true,
+            "Links": [{
+                "Id": 1,
+                "IdCategoriaLink": 1,
+                "Nome": "Como fazer BigMC",
+                "UrlLink": "http://www.google.com",
+                "DtInclusao": "2021-01-01",
+                "DtAlteracao": "2021-01-01",
+                "Ativo": true
+            },{
+                "Id": 2,
+                "IdCategoriaLink": 1,
+                "Nome": "Procedimentos Bebidas",
+                "UrlLink": "http://www.google.com",
+                "DtInclusao": "2021-01-01",
+                "DtAlteracao": "2021-01-01",
+                "Ativo": true
+            },
+            {
+                "Id": 3,
+                "IdCategoriaLink": 1,
+                "Nome": "Sorvete de Creme",
+                "UrlLink": "http://www.google.com",
+                "DtInclusao": "2021-01-01",
+                "DtAlteracao": "2021-01-01",
+                "Ativo": true
+            }]
+        },
+        {
+            "Id": 4,
+            "Nome": "Financeiro",
+            "Descricao": "Financeiro da galera",
+            "Ico": "chart-bar",
+            "Posicao": 4,
+            "DtInclusao": "2021-01-01",
+            "DtAlteracao": "2021-01-01",
+            "Ativo": true,
+            "Links": [{
+                "Id": 1,
+                "IdCategoriaLink": 1,
+                "Nome": "Como fazer BigMC",
+                "UrlLink": "http://www.google.com",
+                "DtInclusao": "2021-01-01",
+                "DtAlteracao": "2021-01-01",
+                "Ativo": true
+            },{
+                "Id": 2,
+                "IdCategoriaLink": 1,
+                "Nome": "Procedimentos Bebidas",
+                "UrlLink": "http://www.google.com",
+                "DtInclusao": "2021-01-01",
+                "DtAlteracao": "2021-01-01",
+                "Ativo": true
+            },
+            {
+                "Id": 3,
+                "IdCategoriaLink": 1,
+                "Nome": "Sorvete de Creme",
+                "UrlLink": "http://www.google.com",
+                "DtInclusao": "2021-01-01",
+                "DtAlteracao": "2021-01-01",
+                "Ativo": true
+            }]
+        }
+    ]
+}
