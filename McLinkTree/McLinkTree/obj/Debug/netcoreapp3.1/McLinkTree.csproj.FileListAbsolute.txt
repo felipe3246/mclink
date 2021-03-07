@@ -42,3 +42,8 @@ C:\Projetos\mclink\McLinkTree\McLinkTree\bin\Debug\netcoreapp3.1\Pomelo.JsonObje
 C:\Projetos\mclink\McLinkTree\McLinkTree\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 C:\Projetos\mclink\McLinkTree\McLinkTree\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 C:\Projetos\mclink\McLinkTree\McLinkTree\obj\Debug\netcoreapp3.1\McLinkTree.csproj.CopyComplete
+C:\Projetos\mclink\McLinkTree\McLinkTree\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Projetos\mclink\McLinkTree\McLinkTree\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Projetos\mclink\McLinkTree\McLinkTree\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Projetos\mclink\McLinkTree\McLinkTree\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Projetos\mclink\McLinkTree\McLinkTree\obj\Debug\netcoreapp3.1\McLinkTree.MvcApplicationPartsAssemblyInfo.cs

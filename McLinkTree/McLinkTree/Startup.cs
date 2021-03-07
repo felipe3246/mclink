@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace McLinkTree
 {
@@ -22,6 +23,15 @@ namespace McLinkTree
             string dbconn = this.Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContextPool<McLinkTreeContext>(options => options.UseMySql(dbconn));
             services.AddControllers();
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Title = "Mc Link Tree Feliz",
+                    Version = "v1",
+                    Description = "Árvore de links internos para treinamentos.",
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +50,9 @@ namespace McLinkTree
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "Mc Link Tree"));
         }
     }
 }
