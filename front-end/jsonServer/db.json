@@ -12,8 +12,8 @@
             "Links": [{
                 "Id": 1,
                 "IdCategoriaLink": 1,
-                "Nome": "Como fazer BigMC",
-                "UrlLink": "http://www.google.com",
+                "Nome": "Campus Arcos Dourados",
+                "UrlLink": "https://campus.arcosdorados.net/Default.aspx",
                 "DtInclusao": "2021-01-01",
                 "DtAlteracao": "2021-01-01",
                 "Ativo": true
@@ -48,16 +48,16 @@
             "Links": [{
                 "Id": 1,
                 "IdCategoriaLink": 2,
-                "Nome": "Como fazer BigMC",
-                "UrlLink": "http://www.google.com",
+                "Nome": "TecnoGente",
+                "UrlLink": "http://tecnogente.cadis.com.br/",
                 "DtInclusao": "2021-01-01",
                 "DtAlteracao": "2021-01-01",
                 "Ativo": true
             },{
                 "Id": 2,
                 "IdCategoriaLink": 2,
-                "Nome": "Procedimentos Bebidas",
-                "UrlLink": "http://www.google.com",
+                "Nome": "Nexusweb",
+                "UrlLink": "https://www.nexusweb.com.br/",
                 "DtInclusao": "2021-01-01",
                 "DtAlteracao": "2021-01-01",
                 "Ativo": true
@@ -120,8 +120,8 @@
             "Links": [{
                 "Id": 1,
                 "IdCategoriaLink": 1,
-                "Nome": "Como fazer BigMC",
-                "UrlLink": "http://www.google.com",
+                "Nome": "Bancadis",
+                "UrlLink": "http://bancadis.cadis.com.br/",
                 "DtInclusao": "2021-01-01",
                 "DtAlteracao": "2021-01-01",
                 "Ativo": true

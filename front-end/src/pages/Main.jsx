@@ -17,7 +17,7 @@ const Main = () => {
         <div className="Main">
             <div className="Main-tools">
                 <div className="Main-tools-input-icons">
-                    <input type="text" className="Main-tools-search input-field" placeholder="Buscar" />
+                    <input type="text" className="Main-tools-search input-field" placeholder="Procurar" />
                     <button>Adicionar Link</button>
                     <button>Categorias</button>
                 </div>
