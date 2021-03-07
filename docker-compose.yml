@@ -1,0 +1,22 @@
+version: '3.0'
+services:
+  db:
+     image: mclinktreedb
+     build:
+      context: db/.
+     environment:
+       MYSQL_DATABASE: mclinktree
+       MYSQL_USER: root
+       MYSQL_PASSWORD: root
+       MYSQL_ROOT_PASSWORD: root
+     restart: always
+  mclinktree:
+    depends_on:
+      - db
+    image: mclinktree
+    build:
+      context: .
+    ports:
+      - "8080:80"
+volumes:
+    db_data:

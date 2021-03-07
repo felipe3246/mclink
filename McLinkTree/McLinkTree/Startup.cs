@@ -35,7 +35,7 @@ namespace McLinkTree
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, McLinkTreeContext dbContext)
         {
             if (env.IsDevelopment())
             {
@@ -50,6 +50,7 @@ namespace McLinkTree
             {
                 endpoints.MapControllers();
             });
+
 
             app.UseSwagger();
             app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "Mc Link Tree"));
