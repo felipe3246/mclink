@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Button, Link } from 'react-floating-action-button'
-import LinkCard from '../components/LinkCard'
+import { Container, Button as Floatbutton } from 'react-floating-action-button';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import LinkCard from '../components/LinkCard';
+import FormLink from '../components/LinkForm';
 import { getCategories } from '../service/categoriasService';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './Main.scss';
 
 const Main = () => {
 
     const [categories, setCategories] = useState({});
+    const [showLinkModal, setShowLinkModal] = useState(false);
 
     useEffect(() => {
         getCategories().then(result => {
@@ -33,18 +38,39 @@ const Main = () => {
                 </div>
             </div>
             <Container>
-                <Link href="#"
+                <Floatbutton
                     tooltip="Gerenciar Categorias"
                     icon="fa fa-list" />
-                <Link href="#"
+                <Floatbutton
                     tooltip="Add link"
-                    icon="fa fa-link" />
-                <Button
+                    icon="fa fa-link"
+                    onClick={() => setShowLinkModal(true)}  />
+                <Floatbutton
                     tooltip="Opções"
                     icon="fa fa-plus"
-                    rotate={true}
-                    onClick={() => alert('FAB Rocks!')} />
+                    rotate={true} />
             </Container>
+
+            <Modal
+                show={showLinkModal}
+                onHide={() => setShowLinkModal(false)}
+                dialogClassName="modal-90w"
+                size="xl"
+                aria-labelledby="example-custom-modal-styling-title"
+            >
+                <Modal.Header closeButton>
+                <Modal.Title id="example-custom-modal-styling-title">
+                    Adicionar novo Link
+                </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <FormLink />
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button>Salvar</Button>
+                    <Button>Salvar e Fechar</Button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }

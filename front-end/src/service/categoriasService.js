@@ -1,7 +1,7 @@
 import env from '../config/env';
 
 const getCategories = () => {
-    return fetch(`${env.host}/categorias`).then(response => response.json())
+    return fetch(`${env.host}/categoriaLink`).then(response => response.json())
     .catch(error => console.error('Error:', error))
     .then(response => response);
 }
