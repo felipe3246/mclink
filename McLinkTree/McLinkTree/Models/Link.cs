@@ -6,7 +6,7 @@ namespace McLinkTree.Models
     {
         public int Id { get; set; }
 
-        public int IdCategoriaLink { get; set; }
+        public int CategoriaLinkId { get; set; }
 
         public string Nome { get; set; }
 

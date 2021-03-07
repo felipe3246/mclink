@@ -4,14 +4,16 @@ using McLinkTree;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace McLinkTree.Migrations
 {
     [DbContext(typeof(McLinkTreeContext))]
-    partial class McLinkTreeContextModelSnapshot : ModelSnapshot
+    [Migration("20210307011637_FixRelationShip")]
+    partial class FixRelationShip
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,7 +70,7 @@ namespace McLinkTree.Migrations
                     b.Property<bool>("Ativo")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("CategoriaLinkId")
+                    b.Property<int?>("CategoriaLinkId")
                         .HasColumnType("int");
 
                     b.Property<string>("Descricao")
@@ -79,6 +81,9 @@ namespace McLinkTree.Migrations
 
                     b.Property<DateTime>("DtInclusao")
                         .HasColumnType("datetime");
+
+                    b.Property<int>("IdCategoriaLink")
+                        .HasColumnType("int");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -97,6 +102,8 @@ namespace McLinkTree.Migrations
                         .IsUnique()
                         .HasName("IDX_UniqueLink");
 
+                    b.HasIndex("IdCategoriaLink");
+
                     b.ToTable("Link");
                 });
 
@@ -104,8 +111,13 @@ namespace McLinkTree.Migrations
                 {
                     b.HasOne("McLinkTree.Models.CategoriaLink", null)
                         .WithMany("Links")
-                        .HasForeignKey("CategoriaLinkId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("CategoriaLinkId");
+
+                    b.HasOne("McLinkTree.Models.CategoriaLink", null)
+                        .WithMany()
+                        .HasForeignKey("IdCategoriaLink")
+                        .HasConstraintName("FK_Link_CategoriaLink")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

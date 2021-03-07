@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace McLinkTree.Models
 {
@@ -14,6 +15,8 @@ namespace McLinkTree.Models
         public string Ico { get; set; }
 
         public int Posicao { get; set; }
+
+        public IList<Link> Links { get; set; }
 
         public DateTime DtInclusao { get; set; }
 

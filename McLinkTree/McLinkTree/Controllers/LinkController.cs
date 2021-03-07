@@ -33,7 +33,7 @@ namespace McLinkTree.Controllers
         [HttpPost]
         public Result Post(Link newLink)
         {
-            var categoria = this.mcLinkTreeContext.CategoriaLink.FirstOrDefault(p => p.Id == newLink.IdCategoriaLink);
+            var categoria = this.mcLinkTreeContext.CategoriaLink.FirstOrDefault(p => p.Id == newLink.CategoriaLinkId);
             if (categoria == null)
             {
                 return new Result() { Error = true, Message = "Categoria inválida." };
@@ -61,7 +61,7 @@ namespace McLinkTree.Controllers
             link.Descricao = editLink.Descricao;
             link.DtInclusao = editLink.DtInclusao;
             link.DtAtualizacao = DateTime.Now;
-            link.IdCategoriaLink = editLink.IdCategoriaLink;
+            link.CategoriaLinkId = editLink.CategoriaLinkId;
             link.UrlLink = editLink.UrlLink;
 
             this.mcLinkTreeContext.Entry(link).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
