@@ -43,6 +43,7 @@ namespace McLinkTree
             }
 
             app.UseRouting();
+            app.UseCors();
 
             app.UseAuthorization();
 
