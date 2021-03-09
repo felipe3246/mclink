@@ -6,4 +6,10 @@ const getCategories = () => {
     .then(response => response);
 }
 
-export { getCategories };
+const postCategory = (category) => {
+    fetch(`${env.host}/categoryLink`, { method: 'POST', body: category })
+        .then(() => { return true; })
+        .catch(() => { return false; })
+}
+
+export { getCategories, postCategory };

@@ -1,9 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
-const FormLink = () => {
+const LinkForm = (showLinkModal) => {
+    const setShowLinkModal = () => {
+        console.log('fechar');
+    }
+
     return (
+        <Modal
+        show={showLinkModal ?? false}
+        onHide={() => setShowLinkModal(false)}
+        dialogClassName="modal-90w"
+        size="xl"
+        aria-labelledby="example-custom-modal-styling-title"
+    >
+        <Modal.Header closeButton>
+        <Modal.Title id="example-custom-modal-styling-title">
+            Adicionar novo Link
+        </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
         <Form>
             <Form.Row>
                 <Form.Group as={Col} controlId="formGridCategoria">
@@ -11,16 +31,6 @@ const FormLink = () => {
                     <Form.Control as="select" defaultValue="">
                         <option value="">RH</option>
                         <option value="">Financeiro</option>
-                    </Form.Control>
-                </Form.Group>
-            </Form.Row>
-
-            <Form.Row>
-                <Form.Group as={Col} controlId="formGridIcone">
-                    <Form.Label>Ícone</Form.Label>
-                    <Form.Control as="select" defaultValue="">
-                        <option value="">Nenhum</option>
-                        <option value="">Foguete</option>
                     </Form.Control>
                 </Form.Group>
             </Form.Row>
@@ -39,7 +49,21 @@ const FormLink = () => {
                 </Form.Group>
             </Form.Row>
         </Form>
+        </Modal.Body>
+        <Modal.Footer>
+            <Button>Salvar</Button>
+            <Button>Salvar e Fechar</Button>
+        </Modal.Footer>
+    </Modal>
     )
 }
 
-export default FormLink;
+LinkForm.propTypes = {
+    showCategoryModal: PropTypes.bool,
+};
+
+LinkForm.defaultProps = {
+    showCategoryModal: false,
+};
+
+export default LinkForm;

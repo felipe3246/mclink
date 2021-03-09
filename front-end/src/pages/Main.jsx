@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Button as Floatbutton } from 'react-floating-action-button';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import LinkCard from '../components/LinkCard';
 import LinkForm from '../components/LinkForm';
 import CategoryForm from '../components/CategoryForm';
@@ -20,6 +18,11 @@ const Main = () => {
             setCategories(result);
         });
     }, []);
+
+    const closeCategoryModal = (status) => {
+        console.log('called');
+        setshowCategoryModal(status);
+    }
 
     return(
         <>
@@ -54,47 +57,8 @@ const Main = () => {
                     rotate={true} />
             </Container>
 
-            <Modal
-                show={showLinkModal}
-                onHide={() => setShowLinkModal(false)}
-                dialogClassName="modal-90w"
-                size="xl"
-                aria-labelledby="example-custom-modal-styling-title"
-            >
-                <Modal.Header closeButton>
-                <Modal.Title id="example-custom-modal-styling-title">
-                    Adicionar novo Link
-                </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <LinkForm />
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button>Salvar</Button>
-                    <Button>Salvar e Fechar</Button>
-                </Modal.Footer>
-            </Modal>
-
-            <Modal
-                show={showCategoryModal}
-                onHide={() => setshowCategoryModal(false)}
-                dialogClassName="modal-90w"
-                size="xl"
-                aria-labelledby="example-custom-modal-styling-title"
-            >
-                <Modal.Header closeButton>
-                <Modal.Title id="example-custom-modal-styling-title">
-                    Adicionar nova Categoria
-                </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <CategoryForm />
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button>Salvar</Button>
-                    <Button>Salvar e Fechar</Button>
-                </Modal.Footer>
-            </Modal>
+            <CategoryForm show={showCategoryModal} setshowCategoryModal={closeCategoryModal} />
+            {/* <LinkForm showLinkModal={showLinkModal} /> */}
         </>
     )
 }
