@@ -3,7 +3,8 @@ import { Container, Button as Floatbutton } from 'react-floating-action-button';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import LinkCard from '../components/LinkCard';
-import FormLink from '../components/LinkForm';
+import LinkForm from '../components/LinkForm';
+import CategoryForm from '../components/CategoryForm';
 import { getCategories } from '../service/categoriasService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Main.scss';
@@ -12,6 +13,7 @@ const Main = () => {
 
     const [categories, setCategories] = useState({});
     const [showLinkModal, setShowLinkModal] = useState(false);
+    const [showCategoryModal, setshowCategoryModal] = useState(false);
 
     useEffect(() => {
         getCategories().then(result => {
@@ -40,7 +42,8 @@ const Main = () => {
             <Container>
                 <Floatbutton
                     tooltip="Gerenciar Categorias"
-                    icon="fa fa-list" />
+                    icon="fa fa-list"
+                    onClick={() => setshowCategoryModal(true)} />
                 <Floatbutton
                     tooltip="Add link"
                     icon="fa fa-link"
@@ -64,7 +67,28 @@ const Main = () => {
                 </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <FormLink />
+                    <LinkForm />
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button>Salvar</Button>
+                    <Button>Salvar e Fechar</Button>
+                </Modal.Footer>
+            </Modal>
+
+            <Modal
+                show={showCategoryModal}
+                onHide={() => setshowCategoryModal(false)}
+                dialogClassName="modal-90w"
+                size="xl"
+                aria-labelledby="example-custom-modal-styling-title"
+            >
+                <Modal.Header closeButton>
+                <Modal.Title id="example-custom-modal-styling-title">
+                    Adicionar nova Categoria
+                </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <CategoryForm />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button>Salvar</Button>
