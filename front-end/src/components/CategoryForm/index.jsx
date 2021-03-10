@@ -1,14 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { postCategory } from '../../service/categoriasService';
 
 const CategoryForm = ({show, setshowCategoryModal}) => {
 
+    const [icon, setIcon] = useState('');
+    const [name, setName] = useState('')
+
+    const cleanFields = () => {
+        setIcon('');
+        setName('');
+    }
+
     const saveCategory = (closeModal) => {
+
+        const newCategory = {
+            icone: icon,
+            nome: name,
+        }
+
+        postCategory(newCategory);
         setshowCategoryModal(closeModal);
+        cleanFields();
     }
 
     return (
@@ -30,15 +47,15 @@ const CategoryForm = ({show, setshowCategoryModal}) => {
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridIcone">
                                     <Form.Label>Ícone</Form.Label>
-                                    <Form.Control as="select" defaultValue="">
+                                    <Form.Control as="select" defaultValue="" onChange={(e) => setIcon(e.target.value)}>
                                         <option value="">Nenhum</option>
-                                        <option value="">Foguete</option>
+                                        <option value="rocket">Foguete</option>
                                     </Form.Control>
                                 </Form.Group>
                             </Form.Row>
                             <Form.Group as={Col} controlId="formGridNome">
                                 <Form.Label>Nome</Form.Label>
-                                <Form.Control type="text" placeholder="Ex: Treinamentos" />
+                                <Form.Control type="text" placeholder="Ex: Treinamentos" onChange={(e) => setName(e.target.value)} />
                             </Form.Group>
                         </Form.Row>
                     </Form>

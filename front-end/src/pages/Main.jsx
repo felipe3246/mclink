@@ -19,9 +19,12 @@ const Main = () => {
         });
     }, []);
 
-    const closeCategoryModal = (status) => {
-        console.log('called');
+    const toggleCategoryModal = (status) => {
         setshowCategoryModal(status);
+    }
+
+    const toggleLinkModal = (status) => {
+        setShowLinkModal(status);
     }
 
     return(
@@ -57,8 +60,8 @@ const Main = () => {
                     rotate={true} />
             </Container>
 
-            <CategoryForm show={showCategoryModal} setshowCategoryModal={closeCategoryModal} />
-            {/* <LinkForm showLinkModal={showLinkModal} /> */}
+            <CategoryForm show={showCategoryModal} setshowCategoryModal={toggleCategoryModal} />
+            <LinkForm show={showLinkModal} setShowLinkModal={toggleLinkModal} />
         </>
     )
 }
