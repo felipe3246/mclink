@@ -4,14 +4,16 @@ using McLinkTree;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace McLinkTree.Migrations
 {
     [DbContext(typeof(McLinkTreeContext))]
-    partial class McLinkTreeContextModelSnapshot : ModelSnapshot
+    [Migration("20210311231534_RemoveRequiredFields")]
+    partial class RemoveRequiredFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

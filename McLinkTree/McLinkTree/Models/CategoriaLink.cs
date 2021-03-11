@@ -18,7 +18,7 @@ namespace McLinkTree.Models
 
         public IList<Link> Links { get; set; }
 
-        public DateTime DtInclusao { get; set; }
+        public DateTime? DtInclusao { get; set; }
 
         public DateTime? DtAtualizacao { get; set; }
 

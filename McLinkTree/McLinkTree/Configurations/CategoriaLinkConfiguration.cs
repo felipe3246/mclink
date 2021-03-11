@@ -14,8 +14,8 @@ namespace McLinkTree.Configurations
             builder.Property(cl => cl.Id).HasColumnType("int").UseMySqlIdentityColumn().IsRequired();
 
             builder.Property(cl => cl.Nome).HasColumnType("nvarchar(50)").IsRequired();
-            builder.Property(cl => cl.Ico).HasColumnType("nvarchar(10)").IsRequired();
-            builder.Property(cl => cl.DtInclusao).HasColumnType("datetime").IsRequired();
+            builder.Property(cl => cl.Ico).HasColumnType("nvarchar(10)").IsRequired(false); ;
+            builder.Property(cl => cl.DtInclusao).HasColumnType("datetime").IsRequired(false);
             builder.Property(cl => cl.DtAtualizacao).HasColumnType("datetime").IsRequired(false);
 
         }
