@@ -13,15 +13,23 @@ const Main = () => {
     const [showLinkModal, setShowLinkModal] = useState(false);
     const [showCategoryModal, setshowCategoryModal] = useState(false);
 
-    useEffect(() => {
+    const updateList = () => {
         getCategories().then(result => {
             setCategories(result);
         });
+    }
+
+    useEffect(() => {
+        updateList();
     }, []);
 
-    const closeCategoryModal = (status) => {
-        console.log('called');
+    const toggleCategoryModal = (status) => {
+        updateList();
         setshowCategoryModal(status);
+    }
+
+    const toggleLinkModal = (status) => {
+        setShowLinkModal(status);
     }
 
     return(
@@ -36,7 +44,7 @@ const Main = () => {
                     { (categories && categories.length > 0) ? (
                         <>
                             { categories.map(category => (
-                                <LinkCard icon={category.Ico} title={category.Nome} links={category.Links} key={category.Id}></LinkCard>
+                                <LinkCard icon={category.ico} title={category.nome} links={category.links} key={category.id}></LinkCard>
                             ))}
                         </>
                     ) : (<h1 style={{ margin: "0 auto" }}>Nenhuma categoria cadastrada</h1>)}
@@ -57,8 +65,8 @@ const Main = () => {
                     rotate={true} />
             </Container>
 
-            <CategoryForm show={showCategoryModal} setshowCategoryModal={closeCategoryModal} />
-            {/* <LinkForm showLinkModal={showLinkModal} /> */}
+            <CategoryForm show={showCategoryModal} setshowCategoryModal={toggleCategoryModal} />
+            <LinkForm show={showLinkModal} setShowLinkModal={toggleLinkModal} />
         </>
     )
 }
