@@ -16,7 +16,7 @@ namespace McLinkTree.Configurations
 
             builder.Property(l => l.Nome).HasColumnType("nvarchar(50)").IsRequired();
             builder.Property(l => l.UrlLink).HasColumnType("nvarchar(500)").IsRequired();
-            builder.Property(l => l.DtInclusao).HasColumnType("datetime").IsRequired(false);
+            builder.Property(l => l.DtInclusao).HasColumnType("datetime").IsRequired();
             builder.Property(l => l.DtAtualizacao).HasColumnType("datetime").IsRequired(false);
         }
     }

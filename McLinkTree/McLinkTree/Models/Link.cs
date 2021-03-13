@@ -14,7 +14,7 @@ namespace McLinkTree.Models
 
         public string UrlLink { get; set; }
 
-        public DateTime? DtInclusao { get; set; }
+        public DateTime DtInclusao { get; set; }
 
         public DateTime? DtAtualizacao { get; set; }
 

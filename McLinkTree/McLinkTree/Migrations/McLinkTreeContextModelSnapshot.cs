@@ -34,10 +34,11 @@ namespace McLinkTree.Migrations
                     b.Property<DateTime?>("DtAtualizacao")
                         .HasColumnType("datetime");
 
-                    b.Property<DateTime?>("DtInclusao")
+                    b.Property<DateTime>("DtInclusao")
                         .HasColumnType("datetime");
 
                     b.Property<string>("Ico")
+                        .IsRequired()
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Nome")
@@ -76,7 +77,7 @@ namespace McLinkTree.Migrations
                     b.Property<DateTime?>("DtAtualizacao")
                         .HasColumnType("datetime");
 
-                    b.Property<DateTime?>("DtInclusao")
+                    b.Property<DateTime>("DtInclusao")
                         .HasColumnType("datetime");
 
                     b.Property<string>("Nome")

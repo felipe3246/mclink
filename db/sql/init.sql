@@ -1,3 +1,7 @@
+CREATE DATABASE IF NOT EXISTS mclinktree;
+
+USE mclinktree; 
+
 CREATE TABLE IF NOT EXISTS `__EFMigrationsHistory` (
     `MigrationId` varchar(95) NOT NULL,
     `ProductVersion` varchar(32) NOT NULL,
@@ -79,13 +83,4 @@ ALTER TABLE `Link` ADD CONSTRAINT `FK_Link_CategoriaLink_CategoriaLinkId` FOREIG
 
 INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
 VALUES ('20210307011925_FixRelationShipAndRemoveWrongKey', '3.1.12');
-
-ALTER TABLE `Link` MODIFY COLUMN `DtInclusao` datetime NULL;
-
-ALTER TABLE `CategoriaLink` MODIFY COLUMN `Ico` nvarchar(10) NULL;
-
-ALTER TABLE `CategoriaLink` MODIFY COLUMN `DtInclusao` datetime NULL;
-
-INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
-VALUES ('20210311231534_RemoveRequiredFields', '3.1.12');
 

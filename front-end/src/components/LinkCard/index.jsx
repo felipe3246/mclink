@@ -3,7 +3,6 @@ import './index.scss';
 
 const LinkCard = ({ icon, title, links }) => {
 
-    console.log(icon, title, links)
 
     const [showLink, setShowLink] = useState('');
 

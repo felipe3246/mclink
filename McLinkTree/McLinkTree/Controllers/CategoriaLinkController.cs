@@ -54,6 +54,7 @@ namespace McLinkTree.Controllers
 
             categoriaLink.Ativo = editCategoriaLink.Ativo;
             categoriaLink.Descricao = editCategoriaLink.Descricao;
+            categoriaLink.DtInclusao = editCategoriaLink.DtInclusao;
             categoriaLink.DtAtualizacao = DateTime.Now;
             categoriaLink.Ico = editCategoriaLink.Ico;
             categoriaLink.Posicao = editCategoriaLink.Posicao;

@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { getCategories } from '../../service/categoriasService';
+import { postLink } from '../../service/linksService';
 
 const LinkForm = ({show, setShowLinkModal}) => {
 
@@ -27,12 +28,7 @@ const LinkForm = ({show, setShowLinkModal}) => {
 
 
     const saveLink = (closeModal) => {
-        const newLink = {
-            categoria: category,
-            titulo: title,
-            link: link,
-        }
-
+        postLink(category, link, title);
         setShowLinkModal(closeModal);
         cleanField();
     }
@@ -59,7 +55,7 @@ const LinkForm = ({show, setShowLinkModal}) => {
                         { (categoryList && categoryList.length > 0) ? (
                         <>
                             { categoryList.map(category => (
-                                <option value={category.Id}>{category.Nome}</option>
+                                <option value={category.id}>{category.nome}</option>
                             ))}
                         </>
                         ) : (<option value="">Nenhuma categoria cadastrada</option>)}
