@@ -18,11 +18,21 @@ const postLink = (category, link, name) => {
         "ativo": true
     }
 
-    console.log("Olha o jonson", body)
-
     fetch(`${env.host}/Link`, { method: 'POST', headers: headers, mode: 'cors' , body: JSON.stringify(body) })
         .then(() => { return true; })
         .catch(() => { return false; })
 }
 
-export { postLink };
+const deleteLink = (id) => {
+    const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+
+    fetch(`${env.host}/Link/${id}`, { method: 'DELETE', headers: headers, mode: 'cors' })
+        .then(() => { return true; })
+        .catch(() => { return false; })
+}
+
+export { postLink, deleteLink };

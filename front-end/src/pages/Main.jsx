@@ -36,16 +36,16 @@ const Main = () => {
     return(
         <>
             <div className="Main">
-                <div className="Main-tools">
+                {/* <div className="Main-tools">
                     <div className="Main-tools-input-icons">
                         <input type="text" className="Main-tools-search input-field" placeholder="Procurar" />
                     </div>
-                </div>
+                </div> */}
                 <div className="Main-items">
                     { (categories && categories.length > 0) ? (
                         <>
                             { categories.map(category => (
-                                <LinkCard icon={category.ico} title={category.nome} links={category.links} key={category.id}></LinkCard>
+                                <LinkCard icon={category.ico} title={category.nome} links={category.links} key={category.id} updateList={updateList}></LinkCard>
                             ))}
                         </>
                     ) : (<h1 style={{ margin: "0 auto" }}>Nenhuma categoria cadastrada</h1>)}
