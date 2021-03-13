@@ -23,6 +23,8 @@ namespace McLinkTree.Controllers
             return this.mcLinkTreeContext.Link.ToList();
         }
 
+
+
         [HttpGet("{id}")]
         public Link Get(int id)
         {
@@ -80,8 +82,7 @@ namespace McLinkTree.Controllers
                 return new Result() { Error = true, Message = "Link não encontrado, não é possível remover." };
             }
 
-            link.Ativo = false;
-            this.mcLinkTreeContext.Entry(link).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            this.mcLinkTreeContext.Entry(link).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
             this.mcLinkTreeContext.SaveChanges();
 
             return new Result() { Error = false, Message = string.Empty };
