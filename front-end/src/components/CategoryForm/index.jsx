@@ -60,9 +60,9 @@ const CategoryForm = ({show, setshowCategoryModal}) => {
                                         {
                                             iconList.map(item => {
                                                 if  (item.value === icon) {
-                                                    return <option value={item.value} selected>{item.text}</option>;
+                                                    return <option key={item.value} value={item.value} selected>{item.text}</option>;
                                                 } else {
-                                                    return <option value={item.value}>{item.text}</option>;
+                                                    return <option key={item.value} value={item.value}>{item.text}</option>;
                                                 }
                                             })
                                         }

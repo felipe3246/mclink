@@ -29,6 +29,7 @@ const Main = () => {
     }
 
     const toggleLinkModal = (status) => {
+        updateList();
         setShowLinkModal(status);
     }
 

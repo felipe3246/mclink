@@ -52,6 +52,7 @@ const LinkForm = ({show, setShowLinkModal}) => {
                     <Form.Group as={Col} controlId="formGridCategoria" onChange={(e) => { setCategory(e.target.value) }}>
                         <Form.Label>Categoria</Form.Label>
                         <Form.Control as="select" defaultValue="">
+                            <option value="">Selecione</option>
                         { (categoryList && categoryList.length > 0) ? (
                         <>
                             { categoryList.map(category => (

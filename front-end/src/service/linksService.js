@@ -4,15 +4,14 @@ import env from '../config/env';
 
 const postLink = (category, link, name) => {
 
-    console.log(category, link, name);
-
     const headers = {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin':'*'
     };
 
     const body = {
-        "categoriaLinkId": category,
+        "categoriaLinkId": parseInt(category),
         "nome": name,
         "descricao": "",
         "urlLink": link,
