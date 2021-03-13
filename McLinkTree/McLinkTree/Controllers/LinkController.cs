@@ -61,7 +61,6 @@ namespace McLinkTree.Controllers
 
             link.Ativo = editLink.Ativo;
             link.Descricao = editLink.Descricao;
-            link.DtInclusao = editLink.DtInclusao;
             link.DtAtualizacao = DateTime.Now;
             link.CategoriaLinkId = editLink.CategoriaLinkId;
             link.UrlLink = editLink.UrlLink;
