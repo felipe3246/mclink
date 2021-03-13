@@ -6,13 +6,14 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { getCategories } from '../../service/categoriasService';
 import { postLink } from '../../service/linksService';
+import { checkString } from '../../utils/validateFields';
 
 const LinkForm = ({show, setShowLinkModal}) => {
 
     const [categoryList, setCategoryList] = useState([]);
-    const [category, setCategory] = useState('');
-    const [title, setTitle] = useState('');
-    const [link, setLink] = useState('');
+    const [category, setCategory] = useState();
+    const [title, setTitle] = useState();
+    const [link, setLink] = useState();
 
     useEffect(() => {
         getCategories().then(result => {
@@ -20,10 +21,11 @@ const LinkForm = ({show, setShowLinkModal}) => {
         });
     }, []);
 
+
     const cleanField = () => {
-        setCategory('');
-        setTitle('');
-        setLink('');
+        setCategory();
+        setTitle();
+        setLink();
     }
 
 
@@ -31,6 +33,14 @@ const LinkForm = ({show, setShowLinkModal}) => {
         postLink(category, link, title);
         setShowLinkModal(closeModal);
         cleanField();
+    }
+
+    const enableSave = () => {
+        if (!checkString(title) || !checkString(link) || !checkString(category)) {
+            return true;
+        }
+
+        return false;
     }
 
     return (
@@ -80,8 +90,8 @@ const LinkForm = ({show, setShowLinkModal}) => {
             </Form>
         </Modal.Body>
         <Modal.Footer>
-            <Button onClick={() => saveLink(true)}>Salvar</Button>
-            <Button onClick={() => saveLink(false)}>Salvar e Fechar</Button>
+            <Button onClick={() => saveLink(true)} disabled={enableSave()}>Salvar</Button>
+            <Button onClick={() => saveLink(false)} disabled={enableSave()}>Salvar e Fechar</Button>
         </Modal.Footer>
     </Modal>
     )
