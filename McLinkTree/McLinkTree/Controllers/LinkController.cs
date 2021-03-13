@@ -33,12 +33,14 @@ namespace McLinkTree.Controllers
         [HttpPost]
         public Result Post(Link newLink)
         {
-            var categoria = this.mcLinkTreeContext.CategoriaLink.FirstOrDefault(p => p.Id == newLink.CategoriaLinkId);
+            var categoryId = int.parse(newLink.CategoriaLinkId);
+            var categoria = this.mcLinkTreeContext.CategoriaLink.FirstOrDefault(p => p.Id == categoryId);
             if (categoria == null)
             {
                 return new Result() { Error = true, Message = "Categoria inválida." };
             }
 
+            newLink.categoryId = categoryId;
             newLink.DtInclusao = DateTime.Now;
             newLink.Ativo = true;
 
