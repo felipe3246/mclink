@@ -22,6 +22,15 @@ namespace McLinkTree
         {
             string dbconn = this.Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContextPool<McLinkTreeContext>(options => options.UseMySql(dbconn));
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+            });
+
             services.AddControllers();
             services.AddSwaggerGen(options =>
             {
@@ -32,15 +41,6 @@ namespace McLinkTree
                     Description = "Árvore de links internos para treinamentos.",
                 });
             });
-
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy", builder => builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
-            });
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
