@@ -5,11 +5,14 @@ import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { postCategory } from '../../service/categoriasService';
+import { checkString } from '../../utils/validateFields';
 
 const CategoryForm = ({show, setshowCategoryModal}) => {
 
-    const [icon, setIcon] = useState('');
-    const [name, setName] = useState('');
+    const [icon, setIcon] = useState();
+    const [name, setName] = useState();
+
+    const isEmptyString = (value) => typeof(value) == 'string' && value.length > 0
 
     const iconList = [
         { value: 'rocket', text: 'Foguete' },
@@ -25,8 +28,16 @@ const CategoryForm = ({show, setshowCategoryModal}) => {
     }
 
     const cleanFields = () => {
-        handleIcon('');
-        handleName('');
+        handleIcon();
+        handleName();
+    }
+
+    const enableSave = () => {
+        if (!checkString(icon) || !checkString(name)) {
+            return true;
+        }
+
+        return false;
     }
 
     const saveCategory = (closeModal) => {
@@ -77,8 +88,8 @@ const CategoryForm = ({show, setshowCategoryModal}) => {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={() => saveCategory(true)}>Salvar</Button>
-                    <Button onClick={() => saveCategory(false)}>Salvar e Fechar</Button>
+                    <Button onClick={() => saveCategory(true)} disabled={enableSave()}>Salvar</Button>
+                    <Button onClick={() => saveCategory(false)} disabled={enableSave()}>Salvar e Fechar</Button>
                 </Modal.Footer>
             </Modal>
         </>
