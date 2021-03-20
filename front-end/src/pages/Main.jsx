@@ -3,7 +3,7 @@ import { Container, Button as Floatbutton } from 'react-floating-action-button';
 import LinkCard from '../components/LinkCard';
 import LinkForm from '../components/LinkForm';
 import CategoryForm from '../components/CategoryForm';
-import { getCategories, deleteCategory } from '../service/categoriasService';
+import { getCategories, getCategory } from '../service/categoriasService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Main.scss';
 
@@ -12,8 +12,10 @@ const Main = () => {
     const [categories, setCategories] = useState({});
     const [showLinkModal, setShowLinkModal] = useState(false);
     const [showCategoryModal, setshowCategoryModal] = useState(false);
+    const [editCategory, setEditCategory] = useState(null)
 
     const updateList = () => {
+        console.log('chamou??????')
         setTimeout(() => {
             getCategories().then(result => {
                 setCategories(result);
@@ -25,10 +27,22 @@ const Main = () => {
         updateList();
     }, []);
 
-    const toggleCategoryModal = (status) => {
-        updateList();
+    const toggleCategoryModal = (status, id = null) => {
+        console.log(status);
+        if(id && status) {
+            getCategory(id).then(result => {
+                setEditCategory(result);
+            });
+        }
         setshowCategoryModal(status);
+
+        if(!status) {
+            setEditCategory(null);
+        }
+
+        updateList();
     }
+
 
     const toggleLinkModal = (status) => {
         updateList();
@@ -47,7 +61,7 @@ const Main = () => {
                     { (categories && categories.length > 0) ? (
                         <>
                             { categories.map(category => (
-                                <LinkCard icon={category.ico} categoryId={category.id} title={category.nome} links={category.links} key={category.id} updateList={updateList}></LinkCard>
+                                <LinkCard icon={category.ico} categoryId={category.id} title={category.nome} links={category.links} key={category.id} updateList={updateList} toggleCategoryModal={toggleCategoryModal}></LinkCard>
                             ))}
                         </>
                     ) : (<h1 style={{ margin: "0 auto" }}>Nenhuma categoria cadastrada</h1>)}
@@ -68,8 +82,8 @@ const Main = () => {
                     rotate={true} />
             </Container>
 
-            <CategoryForm show={showCategoryModal} setshowCategoryModal={toggleCategoryModal} />
-            <LinkForm show={showLinkModal} setShowLinkModal={toggleLinkModal} categories={categories} />
+            <CategoryForm show={showCategoryModal} setshowCategoryModal={toggleCategoryModal} categorySelected={editCategory} />
+            <LinkForm show={showLinkModal} setShowLinkModal={toggleLinkModal} categories={categories} updateList={updateList} />
         </>
     )
 }

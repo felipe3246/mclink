@@ -1,28 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import { postCategory } from '../../service/categoriasService';
+import { postCategory, editCategory } from '../../service/categoriasService';
 import { checkString } from '../../utils/validateFields';
 
-const CategoryForm = ({show, setshowCategoryModal}) => {
+const CategoryForm = ({show, setshowCategoryModal, categorySelected}) => {
+
 
     const [icon, setIcon] = useState();
     const [name, setName] = useState();
+    const [id, setId] = useState(null);
+
+    useEffect(() => {
+        console.log(categorySelected);
+        if(categorySelected) {
+            console.log(categorySelected)
+            setIcon(categorySelected.ico);
+            setName(categorySelected.nome);
+            setId(categorySelected.id);
+        } else {
+            setIcon('');
+            setName('');
+            setId(null);
+        }
+    }, [categorySelected]);
 
     const iconList = [
-        { value: 'american-sign-language-interpreting', text: 'Acessibilidade'},
-        { value: 'address-book', text: 'Agenda'},
         { value: 'anchor', text: 'Ancora'},
         { value: 'archive', text: 'Arquivos'},
-        { value: 'balance-scale', text: 'Balança'},
-        { value: 'band-aid', text: 'Band-aid'},
         { value: 'coffee', text: 'Café'},
-        { value: 'clipboard-list', text: 'Checklist'},
         { value: 'rocket', text: 'Foguete' },
-        { value: 'black-tie', text: 'Gravata' },
         { value: 'bullhorn', text: 'Megafone' },
         { value: 'bus', text: 'Onibus' },
         { value: 'user', text: 'Pessoa'},
@@ -42,6 +52,7 @@ const CategoryForm = ({show, setshowCategoryModal}) => {
     const cleanFields = () => {
         handleIcon();
         handleName('');
+        setId(null);
     }
 
     const enableSave = () => {
@@ -54,7 +65,11 @@ const CategoryForm = ({show, setshowCategoryModal}) => {
 
     const saveCategory = (closeModal) => {
 
-        postCategory(icon, name);
+        if(!id) {
+            postCategory(icon, name);
+        } else {
+            editCategory(id, icon, name);
+        }
         setshowCategoryModal(closeModal);
         cleanFields();
     }
@@ -100,7 +115,7 @@ const CategoryForm = ({show, setshowCategoryModal}) => {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={() => saveCategory(true)} disabled={enableSave()}>Salvar</Button>
+                <Button onClick={() => saveCategory(true)} disabled={enableSave()}>Salvar</Button>
                     <Button onClick={() => saveCategory(false)} disabled={enableSave()}>Salvar e Fechar</Button>
                 </Modal.Footer>
             </Modal>

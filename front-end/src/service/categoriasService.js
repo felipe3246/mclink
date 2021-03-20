@@ -7,6 +7,12 @@ const getCategories = () => {
     .then(response => response);
 }
 
+const getCategory = (id) => {
+    return fetch(`${env.host}/CategoriaLink/${id}`).then(response => response.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => response);
+}
+
 const postCategory = (icon, name) => {
     if (checkString(icon) || checkString(name)) {
         const headers = {
@@ -29,6 +35,31 @@ const postCategory = (icon, name) => {
     }
 }
 
+const editCategory = (id, icon, name) => {
+    if (checkString(icon) || checkString(name)) {
+        const headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'*'
+        };
+
+        const body = {
+            "id": id,
+            "nome": name,
+            "ico": icon,
+            "posicao": 0
+        }
+
+        console.log(body);
+
+        fetch(`${env.host}/CategoriaLink/${id}`, { method: 'PUT', headers: headers, mode: 'cors' , body: JSON.stringify(body) })
+            .then(() => { return true; })
+            .catch(() => { return false; });
+    } else {
+        alert('Todos os campos são obrigatórios');
+    }
+}
+
 const deleteCategory = (id) => {
     const headers = {
         'Accept': 'application/json',
@@ -41,4 +72,4 @@ const deleteCategory = (id) => {
         .catch(() => { return false; })
 }
 
-export { getCategories, postCategory, deleteCategory };
+export { getCategories, getCategory, postCategory, deleteCategory, editCategory };

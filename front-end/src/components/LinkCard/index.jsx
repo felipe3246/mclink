@@ -3,7 +3,7 @@ import { deleteLink } from '../../service/linksService';
 import { deleteCategory } from '../../service/categoriasService';
 import './index.scss';
 
-const LinkCard = ({ icon, categoryId, title, links, updateList }) => {
+const LinkCard = ({ icon, categoryId, title, links, updateList, toggleCategoryModal }) => {
 
     const [showLink, setShowLink] = useState('');
 
@@ -49,7 +49,7 @@ const LinkCard = ({ icon, categoryId, title, links, updateList }) => {
                         </ul>
                     ) : <span>Nenhum link</span>}
                     <div className="LinkCard-list-footer">
-                        <span className="button LinkCard-list-footer-editbutton">Editar</span>
+                        <span className="button LinkCard-list-footer-editbutton" onClick={() => toggleCategoryModal(true, categoryId)}>Editar</span>
                         <span className="button LinkCard-list-footer-deletebutton" onClick={() => removeCategory(categoryId, title)}>Deletar</span>
                     </div>
                 </div>
