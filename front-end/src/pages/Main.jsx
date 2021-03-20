@@ -14,9 +14,11 @@ const Main = () => {
     const [showCategoryModal, setshowCategoryModal] = useState(false);
 
     const updateList = () => {
-        getCategories().then(result => {
-            setCategories(result);
-        });
+        setTimeout(() => {
+            getCategories().then(result => {
+                setCategories(result);
+            });
+        }, 1000);
     }
 
     useEffect(() => {

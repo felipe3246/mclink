@@ -12,12 +12,26 @@ const CategoryForm = ({show, setshowCategoryModal}) => {
     const [icon, setIcon] = useState();
     const [name, setName] = useState();
 
-    const isEmptyString = (value) => typeof(value) == 'string' && value.length > 0
-
     const iconList = [
+        { value: 'american-sign-language-interpreting', text: 'Acessibilidade'},
+        { value: 'address-book', text: 'Agenda'},
+        { value: 'anchor', text: 'Ancora'},
+        { value: 'archive', text: 'Arquivos'},
+        { value: 'balance-scale', text: 'Balança'},
+        { value: 'band-aid', text: 'Band-aid'},
+        { value: 'coffee', text: 'Café'},
+        { value: 'cash-register', text: 'Caixa Registradora' },
+        { value: 'clipboard-list', text: 'Checklist'},
         { value: 'rocket', text: 'Foguete' },
+        { value: 'black-tie', text: 'Gravata' },
+        { value: 'book-medical', text: 'Livro Médico' },
+        { value: 'bullhorn', text: 'Megafone' },
+        { value: 'bus', text: 'Onibus' },
         { value: 'user', text: 'Pessoa'},
-    ]
+        { value: 'cheese', text: 'Queijo' },
+        { value: 'algolia', text: 'Relógio'},
+        { value: 'bell', text: 'Sino' },
+    ];
 
     const handleIcon = (value) => {
         setIcon(value);
@@ -29,7 +43,7 @@ const CategoryForm = ({show, setshowCategoryModal}) => {
 
     const cleanFields = () => {
         handleIcon();
-        handleName();
+        handleName('');
     }
 
     const enableSave = () => {

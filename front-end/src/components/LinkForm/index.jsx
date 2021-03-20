@@ -12,8 +12,8 @@ const LinkForm = ({show, setShowLinkModal}) => {
 
     const [categoryList, setCategoryList] = useState([]);
     const [category, setCategory] = useState();
-    const [title, setTitle] = useState();
-    const [link, setLink] = useState();
+    const [title, setTitle] = useState('');
+    const [link, setLink] = useState('');
 
     useEffect(() => {
         getCategories().then(result => {
@@ -24,8 +24,8 @@ const LinkForm = ({show, setShowLinkModal}) => {
 
     const cleanField = () => {
         setCategory();
-        setTitle();
-        setLink();
+        setTitle('');
+        setLink('');
     }
 
 
@@ -65,8 +65,8 @@ const LinkForm = ({show, setShowLinkModal}) => {
                             <option value="">Selecione</option>
                         { (categoryList && categoryList.length > 0) ? (
                         <>
-                            { categoryList.map(category => (
-                                <option value={category.id}>{category.nome}</option>
+                            { categoryList.map(categoryItem => (
+                                <option value={categoryItem.id}>{categoryItem.nome}</option>
                             ))}
                         </>
                         ) : (<option value="">Nenhuma categoria cadastrada</option>)}
