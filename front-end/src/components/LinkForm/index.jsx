@@ -1,25 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import { getCategories } from '../../service/categoriasService';
 import { postLink } from '../../service/linksService';
 import { checkString } from '../../utils/validateFields';
 
-const LinkForm = ({show, setShowLinkModal}) => {
+const LinkForm = ({show, setShowLinkModal, categories}) => {
 
-    const [categoryList, setCategoryList] = useState([]);
     const [category, setCategory] = useState();
     const [title, setTitle] = useState('');
     const [link, setLink] = useState('');
-
-    useEffect(() => {
-        getCategories().then(result => {
-            setCategoryList(result);
-        });
-    }, []);
 
 
     const cleanField = () => {
@@ -63,9 +55,9 @@ const LinkForm = ({show, setShowLinkModal}) => {
                         <Form.Label>Categoria</Form.Label>
                         <Form.Control as="select" defaultValue="">
                             <option value="">Selecione</option>
-                        { (categoryList && categoryList.length > 0) ? (
+                        { (categories && categories.length > 0) ? (
                         <>
-                            { categoryList.map(categoryItem => (
+                            { categories.map(categoryItem => (
                                 <option value={categoryItem.id}>{categoryItem.nome}</option>
                             ))}
                         </>

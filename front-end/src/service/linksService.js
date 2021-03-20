@@ -30,7 +30,7 @@ const deleteLink = (id) => {
         'Access-Control-Allow-Origin':'*'
     };
 
-    fetch(`${env.host}/Link/${id}`, { method: 'DELETE', headers: headers, mode: 'cors' })
+    return fetch(`${env.host}/Link/${id}`, { method: 'DELETE', headers: headers, mode: 'cors' })
         .then(() => { return true; })
         .catch(() => { return false; })
 }

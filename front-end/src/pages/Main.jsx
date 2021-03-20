@@ -69,7 +69,7 @@ const Main = () => {
             </Container>
 
             <CategoryForm show={showCategoryModal} setshowCategoryModal={toggleCategoryModal} />
-            <LinkForm show={showLinkModal} setShowLinkModal={toggleLinkModal} />
+            <LinkForm show={showLinkModal} setShowLinkModal={toggleLinkModal} categories={categories} />
         </>
     )
 }

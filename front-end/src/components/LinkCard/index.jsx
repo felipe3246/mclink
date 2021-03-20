@@ -17,8 +17,7 @@ const LinkCard = ({ icon, title, links, updateList }) => {
     const removeLink = (id, nome) => {
         const checkRemove = window.confirm(`Deseja deletar o link ${nome}?`);
         if (checkRemove) {
-            deleteLink(id);
-            updateList();
+            deleteLink(id).then(() => {updateList();});
         }
     }
 
