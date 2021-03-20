@@ -3,7 +3,7 @@ import { Container, Button as Floatbutton } from 'react-floating-action-button';
 import LinkCard from '../components/LinkCard';
 import LinkForm from '../components/LinkForm';
 import CategoryForm from '../components/CategoryForm';
-import { getCategories } from '../service/categoriasService';
+import { getCategories, deleteCategory } from '../service/categoriasService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Main.scss';
 
@@ -47,7 +47,7 @@ const Main = () => {
                     { (categories && categories.length > 0) ? (
                         <>
                             { categories.map(category => (
-                                <LinkCard icon={category.ico} title={category.nome} links={category.links} key={category.id} updateList={updateList}></LinkCard>
+                                <LinkCard icon={category.ico} categoryId={category.id} title={category.nome} links={category.links} key={category.id} updateList={updateList}></LinkCard>
                             ))}
                         </>
                     ) : (<h1 style={{ margin: "0 auto" }}>Nenhuma categoria cadastrada</h1>)}

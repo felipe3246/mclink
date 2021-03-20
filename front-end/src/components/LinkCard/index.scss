@@ -22,7 +22,6 @@
             font-size: 1.5rem;
             .LinkCard-arrow {
                 float: right;
-                
             }
 
             i {
@@ -55,6 +54,22 @@
             color: var(--color-text);
             float: right;
             cursor: pointer;
+        }
+
+        &-footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--color-input);
+
+            &-editbutton {
+                background-color: var(--color-drop-link);
+                color: var(--color-withe);
+            }
+
+            &-deletebutton {
+                background-color: var(--color-red);
+                color: var(--color-withe);
+            }
         }
     }
 

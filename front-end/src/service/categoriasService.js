@@ -29,4 +29,16 @@ const postCategory = (icon, name) => {
     }
 }
 
-export { getCategories, postCategory };
+const deleteCategory = (id) => {
+    const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin':'*'
+    };
+
+    return fetch(`${env.host}/CategoriaLink/${id}`, { method: 'DELETE', headers: headers, mode: 'cors' })
+        .then(() => { return true; })
+        .catch(() => { return false; })
+}
+
+export { getCategories, postCategory, deleteCategory };

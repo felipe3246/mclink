@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { deleteLink } from '../../service/linksService';
+import { deleteCategory } from '../../service/categoriasService';
 import './index.scss';
 
-const LinkCard = ({ icon, title, links, updateList }) => {
+const LinkCard = ({ icon, categoryId, title, links, updateList }) => {
 
     const [showLink, setShowLink] = useState('');
 
@@ -14,10 +15,17 @@ const LinkCard = ({ icon, title, links, updateList }) => {
         return `fa fa-${icon}`
     }
 
-    const removeLink = (id, nome) => {
-        const checkRemove = window.confirm(`Deseja deletar o link ${nome}?`);
+    const removeLink = (id, name) => {
+        const checkRemove = window.confirm(`Deseja deletar o link ${name}?`);
         if (checkRemove) {
             deleteLink(id).then(() => {updateList();});
+        }
+    }
+
+    const removeCategory = (id, name) => {
+        const checkRemove = window.confirm(`Deseja deletar o link ${name}?`);
+        if (checkRemove) {
+            deleteCategory(id).then(() => {updateList();});
         }
     }
 
@@ -35,12 +43,15 @@ const LinkCard = ({ icon, title, links, updateList }) => {
                                 <li key={index}>
                                     <a href={link.urlLink} className="LinkCard-list-item" target="_blank" rel="noreferrer">{link.nome}</a>
                                     <span className="LinkCard-list-icon" onClick={() => removeLink(link.id, link.nome)}><i className="fa fa-trash"></i></span>
-                                    {/* <span className="LinkCard-list-icon"><i className="fa fa-edit"></i></span> */}
                                 </li>
                             )
                         })}
                         </ul>
                     ) : <span>Nenhum link</span>}
+                    <div className="LinkCard-list-footer">
+                        <span className="button LinkCard-list-footer-editbutton">Editar</span>
+                        <span className="button LinkCard-list-footer-deletebutton" onClick={() => removeCategory(categoryId, title)}>Deletar</span>
+                    </div>
                 </div>
             ) : (<></>)}
         </div>
