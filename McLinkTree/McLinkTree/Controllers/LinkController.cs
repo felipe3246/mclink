@@ -23,8 +23,6 @@ namespace McLinkTree.Controllers
             return this.mcLinkTreeContext.Link.ToList();
         }
 
-
-
         [HttpGet("{id}")]
         public Link Get(int id)
         {
@@ -35,57 +33,90 @@ namespace McLinkTree.Controllers
         [HttpPost]
         public Result Post(Link newLink)
         {
-            var categoria = this.mcLinkTreeContext.CategoriaLink.FirstOrDefault(p => p.Id == newLink.CategoriaLinkId);
-            if (categoria == null)
+            try
             {
-                return new Result() { Error = true, Message = "Categoria inválida." };
+                var categoria = this.mcLinkTreeContext.CategoriaLink.FirstOrDefault(p => p.Id == newLink.CategoriaLinkId);
+                if (categoria == null)
+                {
+                    return new Result() { Error = true, Message = "Categoria inválida." };
+                }
+
+                newLink.CategoriaLinkId = int.Parse(categoria.Id.ToString());
+                newLink.DtInclusao = DateTime.Now;
+                newLink.Ativo = true;
+
+                this.mcLinkTreeContext.Add(newLink);
+                this.mcLinkTreeContext.SaveChanges();
+
+                return new Result() { Error = false, Message = string.Empty };
+            }
+            catch (Exception ex)
+            {
+                return new Result() { Error = true, Message = ex.Message };
             }
 
-            newLink.CategoriaLinkId = int.Parse(categoria.Id.ToString());
-            newLink.DtInclusao = DateTime.Now;
-            newLink.Ativo = true;
-
-            this.mcLinkTreeContext.Add(newLink);
-            this.mcLinkTreeContext.SaveChanges();
-
-            return new Result() { Error = false, Message = string.Empty };
         }
 
         [HttpPut("{id}")]
         public Result Put(int id, Link editLink)
         {
-            var link = this.mcLinkTreeContext.Link.FirstOrDefault(p => p.Id == id);
-            if (link == null)
+            try
             {
-                return new Result() { Error = true, Message = "Link não encontrado, não é possível atualizar." };
+                var link = this.mcLinkTreeContext.Link.FirstOrDefault(p => p.Id == id);
+                if (link == null)
+                {
+                    return new Result() { Error = true, Message = "Link não encontrado, não é possível atualizar." };
+                }
+
+                if (link.Ativo != editLink.Ativo)
+                {
+                    link.Ativo = editLink.Ativo;
+                }
+
+                if (!string.IsNullOrEmpty(editLink.Descricao) && link.Descricao != editLink.Descricao)
+                {
+                    link.Descricao = editLink.Descricao;
+                }
+
+                link.DtAtualizacao = DateTime.Now;
+                link.CategoriaLinkId = editLink.CategoriaLinkId;
+
+                if (!string.IsNullOrEmpty(editLink.UrlLink) && link.UrlLink != editLink.UrlLink)
+                {
+                    link.UrlLink = editLink.UrlLink;
+                }
+
+                this.mcLinkTreeContext.Entry(link).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                this.mcLinkTreeContext.SaveChanges();
+
+                return new Result() { Error = false, Message = string.Empty };
             }
-
-            link.Ativo = editLink.Ativo;
-            link.Descricao = editLink.Descricao;
-            link.DtInclusao = editLink.DtInclusao;
-            link.DtAtualizacao = DateTime.Now;
-            link.CategoriaLinkId = editLink.CategoriaLinkId;
-            link.UrlLink = editLink.UrlLink;
-
-            this.mcLinkTreeContext.Entry(link).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            this.mcLinkTreeContext.SaveChanges();
-
-            return new Result() { Error = false, Message = string.Empty };
+            catch (Exception ex)
+            {
+                return new Result() { Error = true, Message = ex.Message };
+            }
         }
 
         [HttpDelete("{id}")]
         public Result Delete(int id)
         {
-            var link = this.mcLinkTreeContext.Link.FirstOrDefault(p => p.Id == id);
-            if (link == null)
+            try
             {
-                return new Result() { Error = true, Message = "Link não encontrado, não é possível remover." };
+                var link = this.mcLinkTreeContext.Link.FirstOrDefault(p => p.Id == id);
+                if (link == null)
+                {
+                    return new Result() { Error = true, Message = "Link não encontrado, não é possível remover." };
+                }
+
+                this.mcLinkTreeContext.Entry(link).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+                this.mcLinkTreeContext.SaveChanges();
+
+                return new Result() { Error = false, Message = string.Empty };
             }
-
-            this.mcLinkTreeContext.Entry(link).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
-            this.mcLinkTreeContext.SaveChanges();
-
-            return new Result() { Error = false, Message = string.Empty };
+            catch (Exception ex)
+            {
+                return new Result() { Error = true, Message = ex.Message };
+            }
         }
     }
 }
