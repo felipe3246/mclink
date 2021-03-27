@@ -52,13 +52,32 @@ namespace McLinkTree.Controllers
                 return new Result() { Error = true, Message = "Categoria não encontrada, não é possível atualizar." };
             }
 
-            categoriaLink.Ativo = editCategoriaLink.Ativo;
-            categoriaLink.Descricao = editCategoriaLink.Descricao;
-            categoriaLink.DtInclusao = editCategoriaLink.DtInclusao;
+            if (editCategoriaLink.Ativo != null && categoriaLink.Ativo != editCategoriaLink.Ativo)
+            {
+                categoriaLink.Ativo = editCategoriaLink.Ativo;
+            }
+
+            if (!string.IsNullOrEmpty(editCategoriaLink.Descricao) && categoriaLink.Descricao != editCategoriaLink.Descricao)
+            {
+                categoriaLink.Descricao = editCategoriaLink.Descricao;
+            }
+
             categoriaLink.DtAtualizacao = DateTime.Now;
-            categoriaLink.Ico = editCategoriaLink.Ico;
-            categoriaLink.Posicao = editCategoriaLink.Posicao;
-            categoriaLink.Nome = editCategoriaLink.Nome;
+
+            if (!string.IsNullOrEmpty(editCategoriaLink.Ico) && categoriaLink.Ico != editCategoriaLink.Ico)
+            {
+                categoriaLink.Ico = editCategoriaLink.Ico;
+            }
+
+            if (editCategoriaLink.Posicao != null && categoriaLink.Posicao != editCategoriaLink.Posicao)
+            {
+                categoriaLink.Posicao = editCategoriaLink.Posicao;
+            }
+
+            if (!string.IsNullOrEmpty(editCategoriaLink.Nome) && categoriaLink.Nome != editCategoriaLink.Nome)
+            {
+                categoriaLink.Nome = editCategoriaLink.Nome;
+            }
 
             this.mcLinkTreeContext.Entry(categoriaLink).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             this.mcLinkTreeContext.SaveChanges();
@@ -75,8 +94,7 @@ namespace McLinkTree.Controllers
                 return new Result() { Error = true, Message = "Categoria não encontrada, não é possível remover." };
             }
 
-            categoriaLink.Ativo = false;
-            this.mcLinkTreeContext.Entry(categoriaLink).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            this.mcLinkTreeContext.Entry(categoriaLink).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
             this.mcLinkTreeContext.SaveChanges();
 
             return new Result() { Error = false, Message = string.Empty };
