@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Button as Floatbutton } from 'react-floating-action-button';
+import Loading from '../components/Loading';
 import LinkCard from '../components/LinkCard';
 import LinkForm from '../components/LinkForm';
 import CategoryForm from '../components/CategoryForm';
@@ -12,23 +13,25 @@ const Main = () => {
     const [categories, setCategories] = useState({});
     const [showLinkModal, setShowLinkModal] = useState(false);
     const [showCategoryModal, setshowCategoryModal] = useState(false);
-    const [editCategory, setEditCategory] = useState(null)
+    const [editCategory, setEditCategory] = useState(null);
+    const [showLoading, setShowLoading] = useState(false)
 
     const updateList = () => {
-        console.log('chamou??????')
         setTimeout(() => {
             getCategories().then(result => {
                 setCategories(result);
+                setShowLoading(false);
             });
         }, 1000);
     }
 
     useEffect(() => {
+        setShowLoading(true);
         updateList();
     }, []);
 
     const toggleCategoryModal = (status, id = null) => {
-        console.log(status);
+
         if(id && status) {
             getCategory(id).then(result => {
                 setEditCategory(result);
@@ -51,6 +54,7 @@ const Main = () => {
 
     return(
         <>
+            <Loading show={showLoading}/>
             <div className="Main">
                 {/* <div className="Main-tools">
                     <div className="Main-tools-input-icons">
