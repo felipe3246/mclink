@@ -27,6 +27,7 @@ namespace McLinkTree
             {
                 options.AddPolicy("CorsPolicy", builder => builder
                 .AllowAnyOrigin()
+                .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
             });
