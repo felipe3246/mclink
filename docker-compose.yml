@@ -13,6 +13,8 @@ services:
     ports:
      - "3306:3306"
     command: --init-file /docker-entrypoint-initdb.d/init.sql
+    networks:
+      - mclink-network
   mclinktree_back:
     depends_on:
       - db
@@ -21,6 +23,8 @@ services:
       context: .
     ports:
       - "8080:8080"
+    networks:
+      - mclink-network
   mclinktree_front:
     depends_on:
       - db
@@ -30,5 +34,10 @@ services:
       context: front-end/.
     ports:
       - '80:80'
+    networks:
+      - mclink-network
 volumes:
     db_data:
+networks:
+  mclink-network:
+    driver: bridge
