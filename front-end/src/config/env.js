@@ -1,5 +1,5 @@
 const envConfig = {
-    "host": "http://172.17.0.1:8080/api",
+    "host": "http://167.172.155.3:8080/api",
 }
 
 export default envConfig;
